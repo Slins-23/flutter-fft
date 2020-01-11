@@ -16,12 +16,12 @@ The following needs to be added to your project's `"android/app/src/main/Android
 
 This is my first (and currently only) Flutter plugin and Java project.
 
-I was making my personal guitar tuner application on Flutter, when I realized that I couldn't find any examples of audio analysis/processing/manipulation with Flutter.
+I was gathering ideas my personal guitar tuner application on Flutter, when I realized that I couldn't find any examples of audio analysis/processing/manipulation with Flutter.
 
-Flutter doesn't have great support for device specific hardware, such as microphone input, which obviously is the fundamental pillar for anything that deals with audio processing in real-time. 
+Flutter doesn't have great support for device specific hardware, such as microphone input. Obviously, it is the fundamental pillar for anything that deals with audio processing in real-time.  
 Since Flutter has "just" started to become mainstream, there are still not many real-world projects or examples around.
 
-Regardless, the plan I ended up coming up with was to code a platform channel for android, which is basically a way to call native code from within Flutter - i.e. Calling Java functions on Flutter.
+The plan I ended up coming up with was to code a platform channel for android, which is basically a way to call native code from within Flutter - i.e. Calling Java functions on Flutter.
 
 The problem with this is that, as it calls native platform code, the "one codebase" Flutter feature is rendered useless, since I would have to code the same thing for both platforms. (Objective-C/Swift for iOS & Java/Kotlin for Android)
 
