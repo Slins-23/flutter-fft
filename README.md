@@ -35,7 +35,7 @@ Because of this, what you can do with the plugin is very strict: Start recording
 
 If you know how to program however, you can easily modify the code for your own needs.
 
-There are many getters and setters for the processed data, which are discussed below.
+There are many getters and setters for the processed and default data, which are going to be discussed further below.
 
 Simple example:
 
