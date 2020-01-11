@@ -132,18 +132,18 @@ class ApplicationState extends State<Application> {
 
 ## Methods
 
-When we instantiate the plugin, a method channel variable is created, with the tag "com.slins.flutterfft/record".
+When we instantiate the plugin, a method channel variable is created, with the tag `"com.slins.flutterfft/record"`.
 
-This is the variable that is used to estabilish a connection between Dart and the platform channel.
+This is the variable responsible for estabilishing a connection between Dart and the platform channel.
 
 ***For the section below, it is assumed that the plugin was instantiated and stored in a variable called "flutterFft".***
 
 ### Three main methods
 
 1. `flutterFft.onRecorderStateChanged`
-   - Stream that listens to the recording's state.  
+   - Stream that listens to the updates from the recorder..  
 2. `flutterFft.startRecording()`
-   - Starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
+   - Starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values as arguments, you have to set them inside the `flutterFft` instance. i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
 3. `flutterFft.stopRecording()`
    - Stops recording.
 
