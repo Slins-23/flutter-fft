@@ -2,11 +2,11 @@
 
 **Warning:** *Currently works only on Android! This plugin makes use of platform channels, and only the Java/Android platform channel has been implemented.*
 
-**The plugin was developed and tested in a Pixel 2 emulator, API 29. Does not work on iOS at the moment due to the platform channel having yet to be implemented.**
+**The plugin was developed and tested in a Pixel 2 emulator, API 29. Does not work on iOS at the moment, due to the platform channel having yet to be implemented.**
 
-**Minimum SDK version >= 24**: You can set update the minimum SDK requirements at "/android/app/build.gradle" in the line `minSdkVersion 16`.
+**Minimum SDK version >= 24**: You can update the minimum SDK requirements at `"/android/app/build.gradle"` in the line `minSdkVersion 16`.
 
-The following needs to be added to your project's `android/app/src/main/AndroidManifest.xml`:
+The following needs to be added to your project's `"android/app/src/main/AndroidManifest.xml"`:
 
 ```xml
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -14,7 +14,7 @@ The following needs to be added to your project's `android/app/src/main/AndroidM
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-My first (and currently only) Flutter plugin and Java project.
+This is my first (and currently only) Flutter plugin and Java project.
 
 I was making my personal guitar tuner application on Flutter, when I realized that I couldn't find any examples of audio analysis/processing/manipulation with Flutter.
 
