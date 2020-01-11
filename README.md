@@ -25,7 +25,7 @@ The plan I ended up coming up with was to code a platform channel for android, w
 
 The problem with this is that, as it calls native platform code, the "one codebase" Flutter feature is rendered useless, since I would have to code the same thing for both platforms. (Objective-C/Swift for iOS & Java/Kotlin for Android)
 
-For this reason, at the moment I have only coded the android platform channel. An iOS platform channel is in the plans for future versions.
+Because of that, at the moment, I only coded the android platform channel. An iOS platform channel is in the plans for future versions.
 
 ## How to use
 
@@ -142,7 +142,7 @@ This is the variable that is used to estabilish a connection between Dart and th
 
 1. `flutterFft.onRecorderStateChanged`
    - Stream that listens to the recording's state.  
-2. `flutterFft.startRecording()` 
+2. `flutterFft.startRecording()`
    - Starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
 3. `flutterFft.stopRecording()`
    - Stops recording.
