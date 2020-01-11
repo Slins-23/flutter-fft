@@ -6,6 +6,14 @@
 
 **Minimum SDK version >= 24**: You can set update the minimum SDK requirements at "/android/app/build.gradle" in the line `minSdkVersion 16`.
 
+The following needs to be added to your project's `android/app/src/main/AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
 My first (and currently only) Flutter plugin and Java project.
 
 I was making my personal guitar tuner application on Flutter, when I realized that I couldn't find any examples of audio analysis/processing/manipulation with Flutter.
@@ -38,51 +46,88 @@ import 'package:flutter_fft/flutter_fft.dart';
 void main() => runApp(Application());
 
 class Application extends StatefulWidget {
-    @override
-    ApplicationState createState() => ApplicationState();
+  @override
+  ApplicationState createState() => ApplicationState();
 }
 
 class ApplicationState extends State<Application> {
-    double frequency;
-    String note;
+  double frequency;
+  String note;
+  bool isRecording;
 
-    FlutterFft flutterFft;
+  FlutterFft flutterFft = new FlutterFft();
 
-    @override
-    void initState() {
-        flutterFft = new FlutterFft();
-        flutterFft.startRecorder();
-        super.initState();
-    }
+  @override
+  void initState() {
+    isRecording = flutterFft.getIsRecording;
+    frequency = flutterFft.getFrequency;
+    note = flutterFft.getNote;
+    super.initState();
+    _async();
+  }
 
-    @override
-    Widget build(BuildContext context) {
-        flutterFft.onRecorderStateChanged.listen((data) {
-            setState(() => {
-                frequency = data[1],
-                note = data[2]
-            });
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Simple flutter fft example",
+      theme: ThemeData.dark(),
+      color: Colors.blue,
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              isRecording
+                  ? Text(
+                      "Current frequency: $note",
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
+                    )
+                  : Text(
+                      "None yet",
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
+                    ),
+              isRecording
+                  ? Text(
+                      "Current frequency: ${frequency.toStringAsFixed(2)}",
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
+                    )
+                  : Text(
+                      "None yet",
+                      style: TextStyle(
+                        fontSize: 35,
+                      ),
+                    ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-            flutterFft.setFrequency = frequency;
-            flutterFft.setNote = note;
-        });
-        return MaterialApp(
-            title: "Simple flutter fft example",
-            themeMode: ThemeMode.dark,
-            home: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                        Text("Current note: $note"),
-                        SizedBox(
-                            height: 50,
-                        ),
-                        Text("Current frequency: ${frequency.toStringAsFixed(2)}",),
-                    ],
-                ),
-            );
-        }
-    }
-
+  _async() async {
+    print("starting...");
+    await flutterFft.startRecorder();
+    setState(() => isRecording = flutterFft.getIsRecording);
+    flutterFft.onRecorderStateChanged.listen(
+      (data) => {
+        setState(
+          () => {
+            frequency = data[1],
+            note = data[2],
+          },
+        ),
+        flutterFft.setNote = note,
+        flutterFft.setFrequency = frequency,
+      },
+    );
+  }
+}
 ```
 
 ## Methods
@@ -94,9 +139,9 @@ This is the variable that is used to estabilish a connection between Dart and th
 **For the section below, it is assumed that the plugin was instantiated and stored to a variable called "flutterFft".**
 
 Three main methods:
-    - `flutterFft.onRecorderStateChanged` stream that listens to the recording's state.
-    - `flutterFft.startRecording()` starts recording using the data from the plugin's **local** instance. In other words, if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.
-    - `flutterFft.stopRecording()` stops the recording.
+    1. `flutterFft.onRecorderStateChanged` stream that listens to the recording's state.  
+    2. `flutterFft.startRecording()` starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
+    3. `flutterFft.stopRecording()` stops the recording.  
 
 We have some default variables, with getters and setters:
     - `_isRecording = false` controller for the recorder state.
