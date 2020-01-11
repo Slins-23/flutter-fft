@@ -100,9 +100,9 @@ class ApplicationState extends State<Application> {
     );
   }
 
-  // Tolerance (int) --> data[0]
-  // Frequency (double) --> data[1];
-  // Note (string) --> data[2];
+  // Tolerance (int) -> data[0]
+  // Frequency (double) -> data[1];
+  // Note (string) -> data[2];
   // Target (double) -> data[3];
   // Distance (double) -> data[4];
   // Octave (int) -> data[5];
