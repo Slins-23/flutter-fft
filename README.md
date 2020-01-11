@@ -21,7 +21,7 @@ I was gathering ideas my personal guitar tuner application on Flutter, when I re
 Flutter doesn't have great support for device specific hardware, such as microphone input. Obviously, it is the fundamental pillar for anything that deals with audio processing in real-time.  
 Since Flutter has "just" started to become mainstream, there are still not many real-world projects or examples around.
 
-The plan I ended up coming up with was to code a platform channel for android, which is basically a way to call native code from within Flutter - i.e. Calling Java functions on Flutter.
+The plan I ended up coming up with was to code a platform channel for android, which is basically a way to call native code from within Flutter - i.e. Calling Java functions through Dart code, using Flutter.
 
 The problem with this is that, as it calls native platform code, the "one codebase" Flutter feature is rendered useless, since I would have to code the same thing for both platforms. (Objective-C/Swift for iOS & Java/Kotlin for Android)
 
