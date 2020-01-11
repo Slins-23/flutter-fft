@@ -147,7 +147,8 @@ This is the variable that is used to estabilish a connection between Dart and th
 3. `flutterFft.stopRecording()`
    - Stops recording.
 
-We have some default variables, with getters and setters:
+### Default variables, with getters and setters
+
     - `_isRecording = false` controller for the recorder state.
       - `flutterFft.getIsRecording`
       - `flutterFft.setIsRecording = BOOL`  
