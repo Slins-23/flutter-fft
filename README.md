@@ -152,7 +152,6 @@ This is the variable that is used to estabilish a connection between Dart and th
 | Variable  | Default Value  | Type | Getter | Setter | Description |
 |-----------|----------------|------|--------|--------|-------------|
 `_tuning` | `["E4", "B3", "G3", "D3", "A2", "E2"]` | `List<String>` | `flutterFft.getTuning` | `flutterFft.setTuning`      controller for the tuning target. Format: `["E4", "B3", "G3", "D3", "A2", "E2"]` (The detected frequency is compared to these values in order to gather the above data)
-
 `_isRecording` | `false` | `bool` | `flutterFft.getIsRecording` | `flutterFft.setIsRecording` | Controller for the recorder state.
 
 `_subscriptionDuration` | `0.25` | `double` | `flutterFft.getSubscriptionDuration` | `flutterFft.setSubscriptionDuration` | Controller for the interval between platform channel function calls.
