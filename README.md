@@ -29,7 +29,7 @@ Because of that, at the moment, I only coded the android platform channel. An iO
 
 ## How to use
 
-As mentioned above, this plugin was purely intended for usage in my personal project, however, since I couldn't find similar implementations, I decided to upload it here, in case anyone else goes through the same.
+As mentioned above, this plugin was purely intended for usage in my personal project, however, since I couldn't find similar implementations, I decided to upload it here, in case anyone else goes through the same process.
 
 Because of this, what you can do with the plugin is very strict: start recording and get data back from the platform channel and stop recording.
 
