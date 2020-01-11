@@ -1,6 +1,7 @@
 # Flutter Fft
 
-Plugin at pub-dev: https://pub.dev/packages/flutter_fft
+### Plugin at pub-dev
+https://pub.dev/packages/flutter_fft
 
 **Warning:** *Currently works only on Android! This plugin makes use of platform channels, and only the Java/Android platform channel has been implemented.*
 
