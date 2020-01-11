@@ -140,10 +140,12 @@ This is the variable that is used to estabilish a connection between Dart and th
 
 ### Three main methods
 
-1. ####`flutterFft.onRecorderStateChanged` 
-   - stream that listens to the recording's state.  
-2. `flutterFft.startRecording()` starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
-3. `flutterFft.stopRecording()` stops the recording.  
+1. `flutterFft.onRecorderStateChanged`
+   - Stream that listens to the recording's state.  
+2. `flutterFft.startRecording()` 
+   - Starts recording using the data from the plugin's **local** instance. In other words,  if you want to pass custom values, other than the default ones, you have to set it, i.e. `flutterFft.setSampleRate = 22050`, then start the recorder.  
+3. `flutterFft.stopRecording()`
+   - Stops recording.
 
 We have some default variables, with getters and setters:
     - `_isRecording = false` controller for the recorder state.
