@@ -149,7 +149,7 @@ This is the variable that is used to estabilish a connection between Dart and th
 
 ### Default variables, getters and setters
 
-Variable | Type | Description | Default value | Getter | Setter
+Variable | Type | Description            | Default value | Getter | Setter
 ---------|------|------------------------|---------------|--------|-------
 `_isRecording` | `bool` | Controller for the recorder state | `false` | `flutterFft.getIsRecording` | `flutterFft.setIsRecording`
 `_subscriptionDuration` | `double` |Controller for the interval between platform channel function calls. | `flutterFft.getSubscriptionDuration` | `flutterFft.setSubscriptionDuration`
