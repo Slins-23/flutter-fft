@@ -9,6 +9,9 @@ build/
 
 .vscode
 
+.flutter-plugins
+.flutter-plugins-dependencies
+
 .idea/
 flutter_fft.iml
 flutter_fft_android.iml
