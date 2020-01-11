@@ -153,33 +153,18 @@ This is the variable that is used to estabilish a connection between Dart and th
 |-----------|----------------|------|--------|--------|-------------|
 `_tuning` | `["E4", "B3", "G3", "D3", "A2", "E2"]` | `List<String>` | `flutterFft.getTuning` | `flutterFft.setTuning`      controller for the tuning target. Format: `["E4", "B3", "G3", "D3", "A2", "E2"]` (The detected frequency is compared to these values in order to gather the above data)
 `_isRecording` | `false` | `bool` | `flutterFft.getIsRecording` | `flutterFft.setIsRecording` | Controller for the recorder state.
-
 `_subscriptionDuration` | `0.25` | `double` | `flutterFft.getSubscriptionDuration` | `flutterFft.setSubscriptionDuration` | Controller for the interval between platform channel function calls.
-
 `_numChannels` | `1` | `int` | `flutterFft.getNumChannels` | `flutterFft.setNumChannels` | Controller for the number of channels that gets passed to the pitch detector.
-
 `_sampleRate` | `44100` | `int` | `flutterFft.getSampleRate` | `flutterFft.setSampleRate` | Controller for the sample rate that gets passed to the pitch detector.
-
 `_androidAudioSource` | `AndroidAudioSource.MIC` | `AndroidAudioSource` | `flutterFft.getAndroidAudioSource` | `flutterFft.setAndroidAudioSource` | Controller for the audio source. (Microphone, etc.)
-
 `_tolerance` | `1.00` | `double` | `flutterFft.getTolerance` | `flutterFft.setTolerance` | Controller for the tolerance. (How far apart can the current frequency from the target frequency in order to be considered on pitch)
-
 `_frequency` | `0` | `double` | `flutterFft.getFrequency` | `flutterFft.setFrequency` | Controller for the frequency.
-
 `_note` | `""` | `String` | `flutterFft.getNote` | `flutterFft.setNote` | Controller for the note
-
 `_target` | `0` | `double` | `flutterFft.getTarget` | `flutterFft.setTarget` | Controller for the target frequency. (Based on the current selected tuning, calculate the nearest frequency in tune to be considered as the target, i.e: `IF currentNote == A && A.frequency.distanceToB IS SmallestTargetDistance -> _target = A.frequency.distanceToB`)
-
-`_distance` | `0` | `double` | `flutterFft.getDistance` | `flutterFft.setDistance` | controller for the distance between the current frequency and the target frequency.
-
+`_distance` | `0` | `double` | `flutterFft.getDistance` | `flutterFft.setDistance` | Controller for the distance between the current frequency and the target frequency.
 `_octave` | `0` | `int` | `flutterFft.getOctave` | `flutterFft.setOctave` | Controller for the detected octave.
-
 `_nearestNote` | `""` | `String` | `flutterFft.getNearestNote` | `flutterFft.setNearestNote` | Controller for nearest note. (Based on the current note)
-
 `_nearestTarget` | `0` | `double` | `flutterFft.getNearestTarget` | `flutterFft.setNearestTarget` | controller for nearest target. (Second smallest distance, as the smallest distance is already `_target`)
-
 `_nearestDistance` | `0` | `double` | `flutterFft.getNearestDistance` | `flutterFft.setNearestDistance` | Controller for nearest distance. (Second smallest distance)
-
 `_nearestOctave` | `0` | `int` | `flutterFft.getNearestOctave` | `flutterFft.setNearestOctave` | Controller for nearest octave. (Based on the "nearest" data)
-
 `_isOnPitch` | `false` | `bool` | `flutterFft.getIsOnPitch` | `flutterFft.setIsOnPitch` | Controller for the pitch
