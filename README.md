@@ -149,11 +149,11 @@ This is the variable that is used to estabilish a connection between Dart and th
 
 ### Default variables, with getters and setters
 
-1. `_isRecording = false` controller for the recorder state.
+* `_isRecording = false` controller for the recorder state.
       - `flutterFft.getIsRecording`
       - `flutterFft.setIsRecording = BOOL`  
 
-2. `_subscriptionDuration = 0.25` controller for the interval between platform channel function calls.
+* `_subscriptionDuration = 0.25` controller for the interval between platform channel function calls.
       - `flutterFft.getSubscriptionDuration`
       - `flutterFft.setSubscriptionDuration = DOUBLE`  
 
