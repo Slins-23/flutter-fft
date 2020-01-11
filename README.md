@@ -149,7 +149,7 @@ This is the variable that is used to estabilish a connection between Dart and th
 
 ### Default variables, with getters and setters
 
-`_isRecording = false` controller for the recorder state.
+- `_isRecording = false` controller for the recorder state.
       - `flutterFft.getIsRecording`
       - `flutterFft.setIsRecording = BOOL`  
 
