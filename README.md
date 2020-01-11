@@ -10,8 +10,6 @@ The following needs to be added to your project's `"android/app/src/main/Android
 
 ```xml
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.INTERNET" />
 ```
 
 This is my first (and currently only) Flutter plugin and Java project.
