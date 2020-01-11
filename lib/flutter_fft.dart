@@ -59,7 +59,7 @@ class FlutterFft {
 
   set setIsRecording(bool isRecording) => _isRecording = isRecording;
   set setSubscriptionDuration(double subscriptionDuration) =>
-      _subscriptionDuration = subscriptionDuration; 
+      _subscriptionDuration = subscriptionDuration;
   set setTolerance(double tolerance) => _tolerance = tolerance;
   set setFrequency(double frequency) => _frequency = frequency;
 
@@ -125,14 +125,17 @@ class FlutterFft {
     }
 
     try {
-      String result =
-          await _channel.invokeMethod('startRecorder', <String, dynamic>{
-        'tuning': this.getTuning,
-        'numChannels': this.getNumChannels,
-        'sampleRate': this.getSampleRate,
-        'androidAudioSource': this.getAndroidAudioSource?.value,
-        'tolerance': this.getTolerance,
-      });
+      String result = await _channel.invokeMethod(
+        'startRecorder',
+        <String, dynamic>{
+          'tuning': this.getTuning,
+          'numChannels': this.getNumChannels,
+          'sampleRate': this.getSampleRate,
+          'androidAudioSource': this.getAndroidAudioSource?.value,
+          'tolerance': this.getTolerance,
+        },
+      );
+      print("cccc");
       _setRecorderCallback();
       this.setIsRecording = true;
 
