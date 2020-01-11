@@ -136,7 +136,7 @@ When we instantiate the plugin, a method channel variable is created, with the t
 
 This is the variable that is used to estabilish a connection between Dart and the platform channel.
 
-**For the section below, it is assumed that the plugin was instantiated and stored to a variable called "flutterFft".**
+***For the section below, it is assumed that the plugin was instantiated and stored to a variable called "flutterFft".***
 
 ### Three main methods
 
@@ -147,13 +147,18 @@ This is the variable that is used to estabilish a connection between Dart and th
 3. `flutterFft.stopRecording()`
    - Stops recording.
 
-### Default variables, with getters and setters
+### Default variables, getters and setters
 
-* `_isRecording = false` controller for the recorder state.
+Variable | Type | Description | Default value | Getter | Setter
+---------|------|-------------|---------------|--------|-------
+`_isRecording` | `bool` | Controller for the recorder state | `false` | `flutterFft.getIsRecording` | `flutterFft.setIsRecording`
+`_subscriptionDuration` | `double` |Controller for the interval between platform channel function calls. | `flutterFft.getSubscriptionDuration` | `flutterFft.setSubscriptionDuration`
+
+1. `_isRecording = false` controller for the recorder state.
       - `flutterFft.getIsRecording`
       - `flutterFft.setIsRecording = BOOL`  
 
-* `_subscriptionDuration = 0.25` controller for the interval between platform channel function calls.
+2. `_subscriptionDuration = 0.25` controller for the interval between platform channel function calls.
       - `flutterFft.getSubscriptionDuration`
       - `flutterFft.setSubscriptionDuration = DOUBLE`  
 
