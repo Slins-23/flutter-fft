@@ -136,7 +136,7 @@ When we instantiate the plugin, a method channel variable is created, with the t
 
 This is the variable that is used to estabilish a connection between Dart and the platform channel.
 
-***For the section below, it is assumed that the plugin was instantiated and stored to a variable called "flutterFft".***
+***For the section below, it is assumed that the plugin was instantiated and stored in a variable called "flutterFft".***
 
 ### Three main methods
 
