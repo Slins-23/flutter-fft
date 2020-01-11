@@ -114,7 +114,7 @@ class FlutterFft {
 
   Future<String> startRecorder() async {
     try {
-      String result = await _channel.invokeMethod("setSubscriptionDuration",
+      await _channel.invokeMethod("setSubscriptionDuration",
           <String, double>{'sec': this.getSubscriptionDuration});
     } catch (err) {
       print("Could not set subscription duration, error: $err");
@@ -135,7 +135,6 @@ class FlutterFft {
           'tolerance': this.getTolerance,
         },
       );
-      print("cccc");
       _setRecorderCallback();
       this.setIsRecording = true;
 
