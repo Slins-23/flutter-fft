@@ -1,4 +1,4 @@
-# Flutter Fft
+# Flutter FFT
 
 ### Plugin at pub-dev
 https://pub.dev/packages/flutter_fft
