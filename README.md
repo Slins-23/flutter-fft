@@ -80,7 +80,7 @@ class ApplicationState extends State<Application> {
             children: <Widget>[
               isRecording
                   ? Text(
-                      "Current frequency: $note",
+                      "Current note: $note",
                       style: TextStyle(
                         fontSize: 35,
                       ),
