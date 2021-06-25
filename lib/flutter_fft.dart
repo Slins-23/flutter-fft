@@ -5,9 +5,10 @@ class FlutterFft {
   static const MethodChannel _channel =
       const MethodChannel("com.slins.flutterfft/record");
 
-  static StreamController<List<Object>> _recorderController;
+  StreamController<List<Object>>? _recorderController;
 
-  Stream<List<Object>> get onRecorderStateChanged => _recorderController.stream;
+  Stream<List<Object>> get onRecorderStateChanged =>
+      _recorderController!.stream;
 
   bool _isRecording = false;
 
@@ -31,8 +32,16 @@ class FlutterFft {
   int _nearestOctave = 0;
 
   bool _isOnPitch = false;
-
-  List<String> _tuning = ["E4", "B3", "G3", "D3", "A2", "E2"];
+  List<String> _tuning = [
+    "E2",
+    "A2",
+    "D3",
+    "G3",
+    "B3",
+    "E4"
+  ]; // Lowest to highest string
+  // List<String> _tuning = ["E2", "E4", "B3", "G3", "D3", "A2", "E4"];
+  // List<String> _tuning = ["E4", "B3", "G3", "D3", "A2", "E2"];
 
   bool get getIsRecording => _isRecording;
   double get getSubscriptionDuration => _subscriptionDuration;
@@ -89,27 +98,76 @@ class FlutterFft {
     }
 
     _channel.setMethodCallHandler((MethodCall call) {
+      // List<Object> newARGS = [
+      //   call.arguments[0],
+      //   call.arguments[1],
+      //   call.arguments[2],
+      //   call.arguments[3],
+      //   call.arguments[4],
+      //   call.arguments[5],
+      //   call.arguments[6],
+      //   call.arguments[7],
+      //   call.arguments[8],
+      //   call.arguments[9],
+      //   call.arguments[10]
+      // ];
+
+      // List<Object> ok = call.arguments;
+
+      // print("Runtime args: ${call.arguments.runtimeType}");
+      // print("Runtime newARGS: ${newARGS.runtimeType}");
+      // print("Equal?: ${call.arguments == newARGS}");
+      // print("Equal2?: ${ok == newARGS}");
+      // _recorderController!.add(newARGS);
+      // _recorderController!.add(call.arguments.toString());
+      // _recorderController!.add(["Equipe rocket"]);
+
       switch (call.method) {
         case "updateRecorderProgress":
           if (_recorderController != null) {
-            _recorderController.add(call.arguments);
+            List<Object> newARGS = [
+              call.arguments[0],
+              call.arguments[1],
+              call.arguments[2],
+              call.arguments[3],
+              call.arguments[4],
+              call.arguments[5],
+              call.arguments[6],
+              call.arguments[7],
+              call.arguments[8],
+              call.arguments[9],
+              call.arguments[10]
+            ];
+            // print("Arguments: ${call.arguments}");
+            // _recorderController!.add(call.arguments);
+            _recorderController!.add(newARGS);
           } else {
-            print("Is not null");
+            throw new ArgumentError(
+                "updateRecorderProgress called but recorder controller is null.");
           }
           break;
         default:
           throw new ArgumentError("Unknown method: ${call.method}");
       }
-      return null;
+      return null as Future<dynamic>;
     });
   }
 
   Future<void> _removeRecorderCallback() async {
     if (_recorderController != null) {}
-    _recorderController
-      ..add(null)
+    // _recorderController!.close();
+    _recorderController!
+      ..add(null as List<Object>)
       ..close();
     _recorderController = null;
+  }
+
+  Future<bool> checkPermission() async {
+    return await _channel.invokeMethod("checkPermission");
+  }
+
+  requestPermission() {
+    _channel.invokeMethod("requestPermission");
   }
 
   Future<String> startRecorder() async {
@@ -125,16 +183,15 @@ class FlutterFft {
     }
 
     try {
-      String result = await _channel.invokeMethod(
-        'startRecorder',
-        <String, dynamic>{
-          'tuning': this.getTuning,
-          'numChannels': this.getNumChannels,
-          'sampleRate': this.getSampleRate,
-          'androidAudioSource': this.getAndroidAudioSource?.value,
-          'tolerance': this.getTolerance,
-        },
-      );
+      String result =
+          await _channel.invokeMethod('startRecorder', <String, dynamic>{
+        'tuning': this.getTuning,
+        'numChannels': this.getNumChannels,
+        'sampleRate': this.getSampleRate,
+        'androidAudioSource': this.getAndroidAudioSource.value,
+        'tolerance': this.getTolerance,
+      });
+
       _setRecorderCallback();
       this.setIsRecording = true;
 
