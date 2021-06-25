@@ -7,7 +7,7 @@
 
 **The plugin was developed and tested in a Pixel 2 emulator, API 29. Does not work on iOS at the moment, due to the platform channel having yet to be implemented.**
 
-**Minimum SDK version >= 24**: You can update the minimum SDK requirements at `"/android/app/build.gradle"` in the line `minSdkVersion 16`.
+**Minimum SDK version >= 24**: You can update the minimum SDK requirements at `"/android/app/build.gradle"` in the line `minSdkVersion 16` of your main application.
 
 The following needs to be added to your project's `"android/app/src/main/AndroidManifest.xml"`:
 
@@ -26,7 +26,7 @@ The plan I ended up coming up with was to code a platform channel for android, w
 
 The problem with this is that, as it calls native platform code, the "one codebase" Flutter feature is rendered useless, since I would have to code the same thing for both platforms. (Objective-C/Swift for iOS & Java/Kotlin for Android)
 
-Because of that, at the moment, I only coded the android platform channel. An iOS platform channel is in the plans for future versions.
+Because of that, at the moment, I only coded the android platform channel.
 
 ## How to use
 
