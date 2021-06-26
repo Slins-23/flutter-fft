@@ -5,7 +5,7 @@
 
 **Warning:** *Currently works only on Android! This plugin makes use of platform channels, and only the Java/Android platform channel has been implemented.*
 
-**The plugin was developed and tested in a Pixel 2 emulator, API 29. Does not work on iOS at the moment, due to the platform channel having yet to be implemented.**
+**The plugin was developed in a Pixel 2 emulator, API 29. Tested in a real Pixel 2, Android 11 and another Pixel 2 emulator, API 30. Does not work on iOS at the moment, due to the platform channel having yet to be implemented.**
 
 **Minimum SDK version >= 24**: You can update the minimum SDK requirements at `"/android/app/build.gradle"` in the line `minSdkVersion 16` of your main application.
 
@@ -112,7 +112,13 @@ class ApplicationState extends State<Application> {
   }
 
   _async() async {
-    print("starting...");
+    print("Starting...");
+
+    // Keep asking for mic permission until accepted
+    while (!(await flutterFft.checkPermission())) {
+      flutterFft.requestPermission();
+    }
+
     await flutterFft.startRecorder();
     setState(() => isRecording = flutterFft.getIsRecording);
     flutterFft.onRecorderStateChanged.listen(

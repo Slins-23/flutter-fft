@@ -7,6 +7,7 @@ class FlutterFft {
 
   StreamController<List<Object>>? _recorderController;
 
+  /// Returns the recorder stream
   Stream<List<Object>> get onRecorderStateChanged =>
       _recorderController!.stream;
 
@@ -43,27 +44,70 @@ class FlutterFft {
   // List<String> _tuning = ["E2", "E4", "B3", "G3", "D3", "A2", "E4"];
   // List<String> _tuning = ["E4", "B3", "G3", "D3", "A2", "E2"];
 
+  /// Returns whether it's recording or not
   bool get getIsRecording => _isRecording;
+
+  /// Returns subscription duration
+  ///
+  /// How often data gets updated
   double get getSubscriptionDuration => _subscriptionDuration;
+
+  /// Returns channels
   int get getNumChannels => _numChannels;
+
+  /// Returns sample rate
   int get getSampleRate => _sampleRate;
+
+  /// Returns android audio source
   AndroidAudioSource get getAndroidAudioSource => _androidAudioSource;
+
+  /// Returns tolerance
+  ///
+  /// How many HZ away can a frequency be from the target and still be considered on pitch
   double get getTolerance => _tolerance;
 
+  /// Returns current frequency
   double get getFrequency => _frequency;
 
+  /// Returns current note
   String get getNote => _note;
+
+  /// Returns current target
   double get getTarget => _target;
+
+  /// Returns distance between current frequecy and target
   double get getDistance => _distance;
+
+  /// Returns current octave
   int get getOctave => _octave;
 
+  /// Returns nearest target note
+  ///
+  /// Note which is in the tuning target and has the closest frequency
   String get getNearestNote => _nearestNote;
+
+  /// Returns nearest target frequency
+  ///
+  /// Frequency which is in the tuning target and has the least distance to the current frequency
   double get getNearestTarget => _nearestTarget;
+
+  /// Returns distance of the nearest target note
+  ///
+  /// Smallest distance between the current frequency and one (the nearest) that is in the tuning target
   double get getNearestDistance => _nearestDistance;
+
+  /// Returns octave of the nearest target note
   int get getNearestOctave => _nearestOctave;
 
+  /// Returns whether the current note/frequency is on pitch
+  ///
+  /// Considered on pitch when current frequency/note is in the tuning target and within a given error (local tolerance) of the closest frequency
   bool get getIsOnPitch => _isOnPitch;
 
+  /// Returns current tuning
+  ///
+  /// List of strings where each element is a string containing 2 characters, the 1st is the note as an alphabetic letter and the 2nd is a number indicating the octave.
+  /// i.e. ["E2", "A2", "D3", "G3", "B3", "E4"];
   List<String> get getTuning => _tuning;
 
   set setIsRecording(bool isRecording) => _isRecording = isRecording;
@@ -92,6 +136,7 @@ class FlutterFft {
 
   set setTuning(List<String> tuning) => _tuning = tuning;
 
+  /// Sets up the recorder stream and call handler
   Future<void> _setRecorderCallback() async {
     if (_recorderController == null) {
       _recorderController = new StreamController.broadcast();
@@ -153,6 +198,7 @@ class FlutterFft {
     });
   }
 
+  /// Closes the recorder stream
   Future<void> _removeRecorderCallback() async {
     if (_recorderController != null) {}
     // _recorderController!.close();
@@ -162,14 +208,17 @@ class FlutterFft {
     _recorderController = null;
   }
 
+  /// Returns whether microphone permission was granted
   Future<bool> checkPermission() async {
     return await _channel.invokeMethod("checkPermission");
   }
 
+  /// Prompts the user to grant permission to use the microphone
   requestPermission() {
     _channel.invokeMethod("requestPermission");
   }
 
+  /// Sets subscription duration, starts recorder from the platform channel, then sets up recorder stream
   Future<String> startRecorder() async {
     try {
       await _channel.invokeMethod("setSubscriptionDuration",
@@ -201,6 +250,7 @@ class FlutterFft {
     }
   }
 
+  /// Stops recorder from the platform channel, then closes recorder stream
   Future<String> stopRecorder() async {
     if (!this.getIsRecording) {
       throw new RecorderStoppedException("Recorder is not running.");

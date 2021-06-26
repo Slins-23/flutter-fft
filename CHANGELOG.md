@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2+3] - 2021-06-25
+
+### Changed
+- Updated readme
+
+## [1.0.2+2] - 2021-06-25
+
+### Changed
+- Description fix
+
+## [1.0.2+1] - 2021-06-25
+
+### Changed
+- Improved package requirements
+
 ## [1.0.2] - 2021-06-24
 
 ### Added
