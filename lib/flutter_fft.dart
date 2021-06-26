@@ -33,16 +33,9 @@ class FlutterFft {
   int _nearestOctave = 0;
 
   bool _isOnPitch = false;
-  List<String> _tuning = [
-    "E2",
-    "A2",
-    "D3",
-    "G3",
-    "B3",
-    "E4"
-  ]; // Lowest to highest string
-  // List<String> _tuning = ["E2", "E4", "B3", "G3", "D3", "A2", "E4"];
-  // List<String> _tuning = ["E4", "B3", "G3", "D3", "A2", "E2"];
+
+  /// Highest to lowest string
+  List<String> _tuning = ["E4", "B3", "G3", "D3", "A2", "E2"];
 
   /// Returns whether it's recording or not
   bool get getIsRecording => _isRecording;
