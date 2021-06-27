@@ -1,6 +1,6 @@
 name: flutter_fft
 description: Pitch detection plugin, made for my personal project. Makes use of platform channels (currently Android only) in order to process audio in real-time and give feedback.
-version: 1.0.2+5
+version: 1.0.2+6
 homepage: https://github.com/Slins-23/flutter-fft
 
 environment:
