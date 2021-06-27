@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2+6] - 2021-06-25
+- Fixed readme
+
 ## [1.0.2+5] - 2021-06-25
 
 ### Changed
