@@ -196,7 +196,7 @@ class FlutterFft {
     if (_recorderController != null) {}
     // _recorderController!.close();
     _recorderController!
-      ..add(null as List<Object>)
+      ..add([])
       ..close();
     _recorderController = null;
   }

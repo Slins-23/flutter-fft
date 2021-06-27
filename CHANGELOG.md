@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2+5] - 2021-06-25
+
+### Changed
+- Fixed remove recorder callback method
+
 ## [1.0.2+4] - 2021-06-25
 
 ### Changed
