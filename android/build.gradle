@@ -18,6 +18,7 @@ rootProject.allprojects {
 }
 apply plugin: 'com.android.library'
 android {
+    namespace "com.slins.flutterfft"
     compileSdkVersion 30
 
     defaultConfig {
