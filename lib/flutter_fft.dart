@@ -135,7 +135,7 @@ class FlutterFft {
       _recorderController = new StreamController.broadcast();
     }
 
-    _channel.setMethodCallHandler((MethodCall call) {
+    _channel.setMethodCallHandler((MethodCall call) async {
       // List<Object> newARGS = [
       //   call.arguments[0],
       //   call.arguments[1],
@@ -187,7 +187,7 @@ class FlutterFft {
         default:
           throw new ArgumentError("Unknown method: ${call.method}");
       }
-      return null as Future<dynamic>;
+      return null;
     });
   }
 
